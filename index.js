@@ -2,7 +2,7 @@ const express = require("express");
 
 const io = require("socket.io")(8900, {
   cors: {
-    origin: "*",
+    origin: "https://appolonia-admin-uat.vercel.app",
   },
 });
 // const PORT = process.env.PORT || 3010;
