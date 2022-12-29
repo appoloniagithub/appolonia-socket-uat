@@ -88,7 +88,7 @@ io.on("connection", (socket) => {
   // send message to a specific user
   socket.on("send-message", async (data) => {
     try {
-      const { receiverId } = data;
+      const { senderId, receiverId, message } = data;
       const user = await activeUsers.find((user) => user.userId === receiverId);
       console.log("Sending from socket to :", receiverId);
       console.log("Data: ", data);
