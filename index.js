@@ -91,6 +91,8 @@ io.on("connection", (socket) => {
     const user = activeUsers.find((user) => user.userId === receiverId);
     console.log("Sending from socket to :", receiverId);
     console.log("Data: ", data);
+    console.log("senderId", senderId);
+    console.log("message", message);
     console.log("active users", activeUsers);
     console.log("user", user);
     if (user) {
