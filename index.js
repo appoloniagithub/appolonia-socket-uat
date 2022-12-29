@@ -60,6 +60,7 @@ const server = express()
 const io = require("socket.io")(server, {
   cors: {
     origin: "https://appolonia-admin-uat.vercel.app/",
+    //origin: "http://localhost:3000",
   },
 });
 
@@ -86,21 +87,18 @@ io.on("connection", (socket) => {
   });
 
   // send message to a specific user
-  socket.on("send-message", async (data) => {
-    try {
-      const { senderId, receiverId, message } = data;
-      const user = await activeUsers.find((user) => user.userId === receiverId);
-      console.log("Sending from socket to :", receiverId);
-      console.log("Data: ", data);
-      console.log("senderId", senderId);
-      console.log("message", message);
-      console.log("active users", activeUsers);
-      console.log("user", user);
-      if (user) {
-        io.to(user.socketId).emit("receive-message", data);
-      }
-    } catch (err) {
-      console.log(err);
+  socket.on("send-message", (data) => {
+    const { senderId, receiverId, message } = data;
+    const user = activeUsers.find((user) => user.userId === receiverId);
+    console.log("Sending from socket to :", receiverId);
+    console.log("Data: ", data);
+    console.log("senderId", senderId);
+    console.log("message", message);
+    console.log("active users", activeUsers);
+    console.log("user", user);
+    if (user) {
+      io.to(user.socketId).emit("receive-message", data);
+      console.log(data, "in receive message");
     }
   });
 });
