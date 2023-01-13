@@ -112,7 +112,7 @@ io.on("connection", (socket) => {
       if (err) {
         console.log(err, "error while uploading");
       } else {
-        console.log("Data in upload file:", data);
+        console.log(path, "path");
       }
     });
   });
