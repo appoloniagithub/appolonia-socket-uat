@@ -60,8 +60,8 @@ const server = express()
 
 const io = require("socket.io")(server, {
   cors: {
-    //origin: "https://appolonia-admin-uat.vercel.app/",
-    origin: "http://localhost:3000",
+    origin: "https://appolonia-admin-uat.vercel.app/",
+    //origin: "http://localhost:3000",
   },
 });
 
