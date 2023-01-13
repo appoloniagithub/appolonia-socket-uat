@@ -1,4 +1,5 @@
 const express = require("express");
+const fs = require("fs");
 
 // const io = require("socket.io")(8900, {
 //   cors: {
@@ -99,5 +100,19 @@ io.on("connection", (socket) => {
       io.to(user.socketId).emit("receive-message", data);
       console.log(data, "in receive message");
     }
+  });
+
+  socket.on("upload", (data) => {
+    const { senderId, receiverId, conversationId, file } = data;
+    console.log(file); // <Buffer 25 50 44 ...>
+
+    // save the content to the disk, for example
+    fs.writeFile("/upload", file, function (err, data) {
+      if (err) {
+        console.log(err, "error while uploading");
+      } else {
+        console.log("Data in upload file:", data);
+      }
+    });
   });
 });
