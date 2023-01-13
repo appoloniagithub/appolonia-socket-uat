@@ -107,7 +107,7 @@ io.on("connection", (socket) => {
     console.log(file); // <Buffer 25 50 44 ...>
 
     // save the content to the disk, for example
-    fs.writeFile("/upload", file, function (err, data) {
+    fs.writeFile("/tmp/upload", file, function (err, data) {
       if (err) {
         console.log(err, "error while uploading");
       } else {
