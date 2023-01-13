@@ -106,7 +106,7 @@ io.on("connection", (socket) => {
     const { senderId, receiverId, conversationId, file } = data;
     console.log(file); // <Buffer 25 50 44 ...>
 
-    const path = "/tmp/upload" + Date.now() + ".png";
+    const path = "/tmp/upload/" + Date.now() + ".png";
     // save the content to the disk, for example
     fs.writeFile(path, file, function (err, data) {
       if (err) {
